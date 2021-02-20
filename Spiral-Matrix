@@ -1,0 +1,36 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        
+        if(n<=0) return vector<vector<int>>();
+        vector<vector<int>> result(n,vector<int>(n));
+        int x=0,xEnd=n-1;
+        int y=0,yEnd=n-1;
+        int cur=1;
+        
+        while(true){            
+            for(int i=y;i<=yEnd;i++) 
+                result[x][i]=cur++;
+            
+            if(++x>xEnd) 
+                break;
+            
+            for(int i=x;i<=xEnd;i++) 
+                result[i][yEnd]=cur++;
+            
+            if(--yEnd<y) 
+                break;
+            
+            for(int i=yEnd;i>=y;i--) 
+                result[xEnd][i]=cur++;
+            
+            if(--xEnd<x) 
+                break;
+            
+            for(int i=xEnd;i>=x;i--) 
+                result[i][y]=cur++;
+            
+            if(++y>yEnd) 
+                break;     
+    }
+        return result;}};
