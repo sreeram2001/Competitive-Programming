@@ -1,5 +1,7 @@
 
 
+#Given a String e.g(ABZ) Find the distance or step taken to move from A to B to Z. ( Shortest ). Consider Z is right before A ( Circular Array )
+
 s = 'AZGB'
 res = 0
 pos = 65
