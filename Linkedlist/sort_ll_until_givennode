@@ -1,0 +1,71 @@
+
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+        
+class LL:
+    def __init__(self):
+        self.head = None
+        
+    def insert_end(self,data):
+        node = Node(data)
+        
+        if self.head == None:
+            self.head = node
+        
+        else:
+            temp = self.head
+            while temp.next != None:
+                temp = temp.next
+                
+            temp.next = node
+            
+    
+    def traversal(self):
+        temp =self.head
+        
+        while temp != None:
+            print(temp.data,end=" ")
+            temp = temp.next
+            
+        
+    def sort_it(self,val):
+        i = 0
+        temp = self.head
+        
+        while temp.data != val:
+            temp = temp.next
+            i = i + 1
+            
+        idx = 0
+        while idx < i:
+            t1 = self.head
+            
+            while t1.next != None:
+                t2 = t1.next
+                
+                while t2.next != None:
+                    if t2.data < t1.data:
+                        temp = t2.data
+                        t2.data = t1.data
+                        t1.data = temp
+                        
+                    t2 = t2.next
+                t1 = t1.next
+            idx = idx + 1
+            
+            
+ll = LL()
+ll.insert_end(46)
+ll.insert_end(45)
+ll.insert_end(43)
+ll.insert_end(44)
+ll.insert_end(67)
+ll.insert_end(98)
+ll.insert_end(47)
+ll.traversal()
+ll.sort_it(67)
+print()
+print("After Sorting Until Given Value  => 67")
+ll.traversal()
