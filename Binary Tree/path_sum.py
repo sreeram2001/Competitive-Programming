@@ -9,25 +9,27 @@ class Solution:
         if root == None:
             return False
         
+        op = []
         
         def sum_path(root,target,path):
 
             if root == None:
                 return
             
-            if root.left == None and root.right == None:
+            path = path + [root.val]
             
-                path = path + root.val
-                if target == path:
-                    return True
-                else:
-                    return False
+            if root.left == None and root.right == None and sum(path)==target:
+                op.append(path)
+                return
             
-            if (sum_path(root.left,target,path+root.val) or sum_path(root.right,target,path+root.val)):
-                return True
-            return False
-    
-        return sum_path(root,targetSum,0)
+            sum_path(root.left,target,path)
+            sum_path(root.right,target,path)
 
-                
             
+        sum_path(root,targetSum,[])
+        
+        if op:
+            return True
+        else:
+            return False
+
